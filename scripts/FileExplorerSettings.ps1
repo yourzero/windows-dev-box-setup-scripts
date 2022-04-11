@@ -1,7 +1,7 @@
 #--- Configuring Windows properties ---
 #--- Windows Features ---
 # Show hidden files, Show protected OS files, Show file extensions
-Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -DisableSnapAssist
 
 #--- File Explorer Settings ---
 # will expand explorer to the actual folder you're in
@@ -13,3 +13,5 @@ Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\
 #taskbar where window is open for multi-monitor
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name MMTaskbarMode -Value 2
 
+#restore Previous Folder Windows 
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name PersistBrowsers -Value 1
