@@ -15,3 +15,5 @@ Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\
 
 #restore Previous Folder Windows 
 Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name PersistBrowsers -Value 1
+
+Clear-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\System -Name AllowClipboardHistory

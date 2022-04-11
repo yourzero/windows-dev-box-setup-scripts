@@ -2,6 +2,9 @@
 # Author: Microsoft
 # Common dev settings for desktop app development
 
+
+# Run: http://boxstarter.org/package/url?https://raw.githubusercontent.com/yourzero/windows-dev-box-setup-scripts/master/dev_capax_base-azure.ps1
+
 Disable-UAC
 
 # Get the base URI path from the ScriptToCall value
