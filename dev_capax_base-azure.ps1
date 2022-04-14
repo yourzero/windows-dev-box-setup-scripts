@@ -24,14 +24,18 @@ function executeScript {
 	iex ((new-object net.webclient).DownloadString("$helperUri/$script"))
 }
 
-#--- Setting up Windows ---
-executeScript "SystemConfiguration.ps1";
-executeScript "FileExplorerSettings.ps1";
-executeScript "RemoveDefaultApps.ps1";
-executeScript "CommonDevTools.ps1";
-executeScript "Browsers.ps1";
 
-executeScript "Capax.ps1";
+## TODO - temporarily removing the other scripts so we can test VS
+
+
+#--- Setting up Windows ---
+# executeScript "SystemConfiguration.ps1";
+# executeScript "FileExplorerSettings.ps1";
+# executeScript "RemoveDefaultApps.ps1";
+# executeScript "CommonDevTools.ps1";
+# executeScript "Browsers.ps1";
+
+# executeScript "Capax.ps1";
 
 executeScript "VisualStudio-Capax.ps1";
 
