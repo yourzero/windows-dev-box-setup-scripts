@@ -1,6 +1,12 @@
 
 #$configPath = $PSScriptRoot + '\..\configs\visualstudio-enterprise.vsconfig'
-$configPath = $PSScriptRoot + '\visualstudio-enterprise.vsconfig'
+#$configPath = $PSScriptRoot + '\visualstudio-enterprise.vsconfig'
+$configPath = 'visualstudio-enterprise.vsconfig'
+
+Write-Host "VS: PS current directory: " + $pwd
+
+$dir = Get-ChildItem
+Write-Host $dir
 
 Write-Host "VS Config Path: " + $configPath
 
