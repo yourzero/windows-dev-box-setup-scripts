@@ -21,6 +21,8 @@ write-host "helper script base URI is $helperUri"
 function executeScript {
     Param ([string]$script)
     write-host "executing $helperUri/$script ..."
+    [Console]::ReadKey()
+
 	iex ((new-object net.webclient).DownloadString("$helperUri/$script"))
 }
 
@@ -36,6 +38,10 @@ function executeScript {
 # executeScript "Browsers.ps1";
 
 # executeScript "Capax.ps1";
+
+
+Write-Host "Main: PS current directory: " + $pwd
+
 
 executeScript "VisualStudio-Capax.ps1";
 
