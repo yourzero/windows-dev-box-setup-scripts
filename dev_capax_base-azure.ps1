@@ -23,7 +23,7 @@ function executeScript {
     write-host "executing $helperUri/$script ..."
     [Console]::ReadKey()
 
-	iex ((new-object net.webclient).DownloadString("$helperUri/$script")) -ArgumentList $helperUri
+	Invoke-Expression ((new-object net.webclient).DownloadString("$helperUri/$script")) $helperUri
 }
 
 
