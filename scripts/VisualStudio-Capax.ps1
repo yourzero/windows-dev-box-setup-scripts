@@ -1,11 +1,16 @@
 
-$configPath = $PSScriptRoot + '\..\configs\visualstudio-enterprise.vsconfig'
+#$configPath = $PSScriptRoot + '\..\configs\visualstudio-enterprise.vsconfig'
+$configPath = $PSScriptRoot + '\visualstudio-enterprise.vsconfig'
 
 Write-Host "VS Config Path: " + $configPath
 
 #choco install visualstudio2022enterprise
 
 choco install visualstudio2022enterprise --package-parameters="--config $configPath"
+
+Write-Host "Visual Studio Installed"
+
+[Console]::ReadKey()
 
 #choco install visualstudio2022enterprise --package-parameters="--config '../configs/visualstudio-enterprise.vsconfig'"
 
