@@ -1,6 +1,11 @@
-param($x)
+param(
+    [alias("x")]
+    [string] 
+    $x
+    
+    )
 
-Write-Host "VS: param = " + $x
+Write-Host "VS: xx param = $x"
 
 [Console]::ReadKey()
 
