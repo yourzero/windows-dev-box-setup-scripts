@@ -1,3 +1,8 @@
+param($x)
+
+Write-Host "VS: param = " + $x
+
+[Console]::ReadKey()
 
 #$configPath = $PSScriptRoot + '\..\configs\visualstudio-enterprise.vsconfig'
 #$configPath = $PSScriptRoot + '\visualstudio-enterprise.vsconfig'
