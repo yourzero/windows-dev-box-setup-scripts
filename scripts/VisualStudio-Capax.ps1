@@ -3,7 +3,7 @@ param(
     $scriptBaseUrl
     )
 
-Write-Host "VS: scriptBaseUrl = $scriptBaseUrl"
+Write-Host "VS:xx  scriptBaseUrl = $scriptBaseUrl"
 
 #[Console]::ReadKey()
 
