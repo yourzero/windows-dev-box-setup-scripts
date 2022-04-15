@@ -1,27 +1,45 @@
 param(
     [string] 
-    $x
-    
+    $scriptBaseUrl
     )
 
-Write-Host "VS: xx param = $x"
+Write-Host "VS: scriptBaseUrl = $scriptBaseUrl"
 
 [Console]::ReadKey()
 
-#$configPath = $PSScriptRoot + '\..\configs\visualstudio-enterprise.vsconfig'
-#$configPath = $PSScriptRoot + '\visualstudio-enterprise.vsconfig'
-$configPath = 'visualstudio-enterprise.vsconfig'
+#$configFileName = $PSScriptRoot + '\..\configs\visualstudio-enterprise.vsconfig'
+#$configFileName = $PSScriptRoot + '\visualstudio-enterprise.vsconfig'
+$configFileName = 'visualstudio-enterprise.vsconfig'
 
 Write-Host "VS: PS current directory: " + $pwd
 
 $dir = Get-ChildItem
 Write-Host $dir
 
-Write-Host "VS Config Path: " + $configPath
+Write-Host "VS Config Path: " + $configFileName
+
+
+
+$configFileUrl = "$scriptBaseUrl/$configFileName"
+$configFileLocalPath = "$Env:USERPROFILE\AppData\Local\VisualStudio-Enterprise-Config\"
+
+# Install applications not available in Chocolatey
+(New-Object System.Net.WebClient).DownloadFile($configFileUrl,"$Env:TEMP\$configFileName");(Expand-Archive "$Env:TEMP\$configFileName" -DestinationPath $configFileLocalPath -Force);
+
+Write-Host "VS: Downloaded VS config file to: $configFileLocalPath"
+
+[Console]::ReadKey()
+
+#(New-Object System.Net.WebClient).DownloadFile("https://typora.io/windows/typora-setup-x64.exe","$Env:TEMP\typora-setup-x64.exe");cmd /c '%TEMP%\typora-setup-x64.exe /SILENT'
+# Include this if you want Xamarin installed  --add Microsoft.VisualStudio.Workload.NetCrossPlat;includeOptional
+#(New-Object System.Net.WebClient).DownloadFile("https://aka.ms/vs/15/release/vs_enterprise.exe","$Env:TEMP\vs_enterprise.exe");cmd /c  'start /wait %TEMP%\vs_enterprise.exe --wait --passive --add Microsoft.VisualStudio.Workload.Azure --add Microsoft.VisualStudio.Workload.Data;includeOptional --add Microsoft.VisualStudio.Workload.NetCoreTools --add Microsoft.VisualStudio.Workload.NetWeb;includeOptional --add Microsoft.VisualStudio.Workload.Node --includeRecommended'
+ 
+
+
 
 #choco install visualstudio2022enterprise
 
-choco install visualstudio2022enterprise --package-parameters="--config $configPath"
+choco install visualstudio2022enterprise --package-parameters="--config $configFileName"
 
 Write-Host "Visual Studio Installed"
 
