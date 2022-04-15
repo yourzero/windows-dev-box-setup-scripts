@@ -5,7 +5,7 @@ param(
 
 Write-Host "VS: scriptBaseUrl = $scriptBaseUrl"
 
-[Console]::ReadKey()
+#[Console]::ReadKey()
 
 #$configFileName = $PSScriptRoot + '\..\configs\visualstudio-enterprise.vsconfig'
 #$configFileName = $PSScriptRoot + '\visualstudio-enterprise.vsconfig'
@@ -40,7 +40,7 @@ Write-Host "VS: Downloaded VS config file to: $configFileDestination"
 
 #choco install visualstudio2022enterprise
 
-choco install visualstudio2022enterprise --package-parameters="--config $configFileName"
+choco install visualstudio2022enterprise --package-parameters="--config $configFileDestination"
 
 Write-Host "Visual Studio Installed"
 
