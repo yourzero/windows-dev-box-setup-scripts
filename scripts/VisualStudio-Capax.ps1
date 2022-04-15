@@ -1,5 +1,4 @@
 param(
-    [alias("x")]
     [string] 
     $x
     
