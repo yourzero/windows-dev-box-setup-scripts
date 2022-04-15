@@ -21,9 +21,13 @@ write-host "helper script base URI is $helperUri"
 function executeScript {
     Param ([string]$script)
     write-host "executing $helperUri/$script ..."
-    [Console]::ReadKey()
+    
+    $fullScriptUrl = "$helperUri/$script"
 
-	Invoke-Expression ((new-object net.webclient).DownloadString("$helperUri/$script")) $helperUri
+	#Invoke-Expression ((new-object net.webclient).DownloadString("$helperUri/$script")) $helperUri
+
+    $scriptPath = ((new-object net.webclient).DownloadString($fullScriptUrl))
+    Invoke-Command -ScriptBlock ([scriptblock]::Create($scriptPath)) -ArgumentList $helperUri
 }
 
 
