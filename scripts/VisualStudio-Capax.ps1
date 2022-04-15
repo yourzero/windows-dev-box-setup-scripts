@@ -1,50 +1,20 @@
-# param(
-#     [string] 
-#     $scriptBaseUrl
-#     )
+param(
+    [string] 
+    $scriptBaseUrl
+    )
 
+Write-Host "VS: scriptBaseUrl = $scriptBaseUrl"
 
-
-
-# abc
-
-
-# def
-
-
-#cfg
-
-
-
-#afsdf
-
-
-
-
-
-
-
-
-$scriptBaseUrl = "XXX"
-Write-Host "VS:xx  scriptBaseUrl = $scriptBaseUrl"
-
-#[Console]::ReadKey()
 
 #$configFileName = $PSScriptRoot + '\..\configs\visualstudio-enterprise.vsconfig'
 #$configFileName = $PSScriptRoot + '\visualstudio-enterprise.vsconfig'
 $configFileName = 'visualstudio-enterprise.vsconfig'
 
 
-#Write-Host "VS Config Path: $configFileName"
-
-
 
 $configFileUrl = "$scriptBaseUrl/$configFileName"
 $configFileDestination = "$Env:TEMP\$configFileName"
-
-# Install applications not available in Chocolatey
 (New-Object System.Net.WebClient).DownloadFile($configFileUrl,$configFileDestination)
-
 Write-Host "VS: Downloaded VS config file to: $configFileDestination"
 
 

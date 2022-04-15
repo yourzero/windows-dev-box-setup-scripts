@@ -39,12 +39,10 @@ function executeScript {
 # executeScript "FileExplorerSettings.ps1";
 # executeScript "RemoveDefaultApps.ps1";
 # executeScript "CommonDevTools.ps1";
-# executeScript "Browsers.ps1";
+executeScript "Browsers.ps1";
 
 # executeScript "Capax.ps1";
 
-
-Write-Host "Main: PS current directory: " + $pwd
 
 
 executeScript "VisualStudio-Capax.ps1";
@@ -68,20 +66,20 @@ executeScript "VisualStudio-Capax.ps1";
 # choco install -y visualstudio2017-workload-azure
 # choco install -y visualstudio2017-workload-manageddesktop
 
-#--- reenabling critial items ---
-#Enable-UAC
-Enable-MicrosoftUpdate
-Install-WindowsUpdate -acceptEula
+# #--- reenabling critial items ---
+# #Enable-UAC
+# Enable-MicrosoftUpdate
+# Install-WindowsUpdate -acceptEula
 
 
-# Disable Windows Update
-$WindowsUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\"
-$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
+# # Disable Windows Update
+# $WindowsUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\"
+# $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
 
-If(Test-Path -Path $WindowsUpdatePath) {
-    Remove-Item -Path $WindowsUpdatePath -Recurse
-}
+# If(Test-Path -Path $WindowsUpdatePath) {
+#     Remove-Item -Path $WindowsUpdatePath -Recurse
+# }
 
-New-Item -Path $WindowsUpdatePath
-New-Item -Path $AutoUpdatePath
-Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
+# New-Item -Path $WindowsUpdatePath
+# New-Item -Path $AutoUpdatePath
+# Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
