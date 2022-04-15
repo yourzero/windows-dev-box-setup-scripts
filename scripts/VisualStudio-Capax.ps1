@@ -16,17 +16,18 @@ Write-Host "VS: PS current directory: " + $pwd
 $dir = Get-ChildItem
 Write-Host $dir
 
-Write-Host "VS Config Path: " + $configFileName
+Write-Host "VS Config Path: $configFileName"
 
 
 
 $configFileUrl = "$scriptBaseUrl/$configFileName"
-$configFileLocalPath = "$Env:USERPROFILE\AppData\Local\VisualStudio-Enterprise-Config\"
+#$configFileLocalPath = "$Env:USERPROFILE\AppData\Local\VisualStudio-Enterprise-Config\"
+$configFileDestination = "$Env:TEMP\$configFileName"
 
 # Install applications not available in Chocolatey
-(New-Object System.Net.WebClient).DownloadFile($configFileUrl,"$Env:TEMP\$configFileName");(Expand-Archive "$Env:TEMP\$configFileName" -DestinationPath $configFileLocalPath -Force);
+(New-Object System.Net.WebClient).DownloadFile($configFileUrl,$configFileDestination)
 
-Write-Host "VS: Downloaded VS config file to: $configFileLocalPath"
+Write-Host "VS: Downloaded VS config file to: $configFileDestination"
 
 [Console]::ReadKey()
 
